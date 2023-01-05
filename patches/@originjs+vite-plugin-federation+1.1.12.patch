@@ -1,0 +1,32 @@
+diff --git a/node_modules/@originjs/vite-plugin-federation/dist/index.js b/node_modules/@originjs/vite-plugin-federation/dist/index.js
+index dc1e123..ec40f2b 100644
+--- a/node_modules/@originjs/vite-plugin-federation/dist/index.js
++++ b/node_modules/@originjs/vite-plugin-federation/dist/index.js
+@@ -2114,7 +2114,6 @@ function prodExposePlugin(options) {
+       ${DYNAMIC_LOADING_CSS}('${DYNAMIC_LOADING_CSS_PREFIX}${exposeFilepath}')
+       return __federation_import('\${__federation_expose_${item[0]}}').then(module =>Object.keys(module).every(item => exportSet.has(item)) ? () => module.default : () => module)},`;
+     }
+-    let remoteEntryChunk;
+     let viteConfigResolved;
+     return {
+         name: 'originjs:expose-production',
+@@ -2181,13 +2180,12 @@ function prodExposePlugin(options) {
+         },
+         generateBundle(_options, bundle) {
+             // replace import absolute path to chunk's fileName in remoteEntry.js
+-            if (!remoteEntryChunk) {
+-                for (const file in bundle) {
+-                    const chunk = bundle[file];
+-                    if ((chunk === null || chunk === void 0 ? void 0 : chunk.facadeModuleId) === '\0virtual:__remoteEntryHelper__') {
+-                        remoteEntryChunk = chunk;
+-                        break;
+-                    }
++            let remoteEntryChunk
++            for (const file in bundle) {
++                const chunk = bundle[file];
++                if ((chunk === null || chunk === void 0 ? void 0 : chunk.facadeModuleId) === '\0virtual:__remoteEntryHelper__') {
++                    remoteEntryChunk = chunk;
++                    break;
+                 }
+             }
+             // placeholder replace
