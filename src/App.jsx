@@ -1,15 +1,17 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
+import { useSelector } from "@legendapp/state/react";
+import { obs } from "host_app/store";
 
 function App() {
-  const [count, setCount] = React.useState(0);
+  const count = useSelector(obs?.counter.count);
 
   const handleIncrement = () => {
-    setCount((prev) => prev + 1);
+    obs?.counter.increaseCounter();
   };
 
   const handleDecrement = () => {
-    setCount((prev) => prev - 1);
+    obs?.counter.decreaseCounter();
   };
 
   return (
