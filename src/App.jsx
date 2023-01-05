@@ -1,10 +1,10 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
-import { useSelector } from "@legendapp/state/react";
+import { observer } from "@legendapp/state/react";
 import { obs } from "host_app/store";
 
 function App() {
-  const count = useSelector(obs?.counter.count);
+  const count = obs?.counter.count.get();
 
   const handleIncrement = () => {
     obs?.counter.increaseCounter();
@@ -87,4 +87,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
