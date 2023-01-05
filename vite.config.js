@@ -11,6 +11,9 @@ export default defineConfig({
     federation({
       name: "remote_app",
       filename: "remoteEntry.js",
+      remotes: {
+        host_app: "https://react-host-app.vercel.app/assets/remoteEntry.js",
+      },
       // Modules to expose
       exposes: {
         "./ModuleB": "./src/App.jsx",
