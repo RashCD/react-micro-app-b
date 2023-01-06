@@ -1,14 +1,17 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
+import useCountStore from "host_app/store";
 
 function App() {
-  const count = 0;
+  const { counter, increaseCounter, decreaseCounter } = useCountStore();
 
   const handleIncrement = () => {
+    increaseCounter();
     console.log("handleIncrement");
   };
 
   const handleDecrement = () => {
+    decreaseCounter();
     console.log("handleDecrement");
   };
 
@@ -33,7 +36,7 @@ function App() {
               noWrap
               sx={{ flexGrow: 1, p: 2 }}
             >
-              {count}
+              {counter}
             </Typography>
             <Box justifyContent={"space-between"}>
               <Button
