@@ -7,12 +7,10 @@ function App() {
 
   const handleIncrement = () => {
     increaseCounter();
-    console.log("handleIncrement");
   };
 
   const handleDecrement = () => {
     decreaseCounter();
-    console.log("handleDecrement");
   };
 
   return (
