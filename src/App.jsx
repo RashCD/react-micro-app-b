@@ -1,14 +1,15 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
-import { obs } from "host_app/store";
 
-function App({ count = 0 }) {
+function App() {
+  const count = 0;
+
   const handleIncrement = () => {
-    obs?.counter.increaseCounter();
+    console.log("handleIncrement");
   };
 
   const handleDecrement = () => {
-    obs?.counter.decreaseCounter();
+    console.log("handleDecrement");
   };
 
   return (
