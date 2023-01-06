@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "remote_app",
+      name: "remote_app_b",
       filename: "remoteEntry.js",
       remotes: {
         host_app: "https://react-host-app.vercel.app/assets/remoteEntry.js",
